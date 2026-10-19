@@ -1,6 +1,6 @@
 # Roo
 
-[![Build Status](https://img.shields.io/travis/roo-rb/roo.svg?style=flat-square)](https://travis-ci.org/roo-rb/roo) [![Maintainability](https://api.codeclimate.com/v1/badges/be8d7bf34e2aeaf67c62/maintainability)](https://codeclimate.com/github/roo-rb/roo/maintainability) [![Coverage Status](https://img.shields.io/coveralls/roo-rb/roo.svg?style=flat-square)](https://coveralls.io/r/roo-rb/roo) [![Gem Version](https://img.shields.io/gem/v/roo.svg?style=flat-square)](https://rubygems.org/gems/roo)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/roo-rb/roo/ruby.yml?style=flat-square)](https://travis-ci.org/roo-rb/roo) [![Maintainability](https://api.codeclimate.com/v1/badges/be8d7bf34e2aeaf67c62/maintainability)](https://codeclimate.com/github/roo-rb/roo/maintainability) [![Coverage Status](https://img.shields.io/coveralls/roo-rb/roo.svg?style=flat-square)](https://coveralls.io/r/roo-rb/roo) [![Gem Version](https://img.shields.io/gem/v/roo.svg?style=flat-square)](https://rubygems.org/gems/roo)
 
 Roo implements read access for all common spreadsheet types. It can handle:
 * Excel 2007 - 2013 formats (xlsx, xlsm)
@@ -8,6 +8,11 @@ Roo implements read access for all common spreadsheet types. It can handle:
 * CSV
 * Excel 97, Excel 2002 XML, and Excel 2003 XML formats when using the [roo-xls](https://github.com/roo-rb/roo-xls) gem (xls, xml)
 * Google spreadsheets with read/write access when using [roo-google](https://github.com/roo-rb/roo-google)
+
+## Important note about next major release
+
+There a plan to make a new major release which will have better support for Ruby 3.x
+Please leave your comments there - https://github.com/roo-rb/roo/issues/630
 
 ## Installation
 
@@ -18,7 +23,7 @@ Install as a gem
 Or add it to your Gemfile
 
 ```ruby
-gem "roo", "~> 2.10.0"
+gem "roo", "~> 3.0.0"
 ```
 ## Usage
 
@@ -169,6 +174,18 @@ sheet.to_csv
 sheet.to_matrix
 sheet.to_xml
 sheet.to_yaml
+```
+
+Specify the file as default argument for `#to_csv`:
+
+```ruby
+sheet.to_csv(File.new("/dev/null"))
+```
+
+specify the custom separator:
+
+```ruby
+sheet.to_csv(separator: ":") # "," using by default
 ```
 
 ### Excel (xlsx and xlsm) Support
